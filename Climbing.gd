@@ -13,6 +13,7 @@ func handle_input(subaru: Subaru, _event: InputEvent) -> void:
 	if _event.is_action_released("Z"):
 		subaru.transition_to("Airing")
 	if _event.is_action_pressed("C"):
+		await get_tree().create_timer(0.02).timeout
 		subaru.cur_stama -= ENERGY_REDUCION_JUMP_ON_WALL
 		jumped = true
 		if direction_jump == Vector2.UP:
