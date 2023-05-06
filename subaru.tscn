@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4aqtu6mrsdgh"]
+
+[ext_resource type="Script" path="res://Subaru.gd" id="1_ry8js"]
+[ext_resource type="Texture2D" uid="uid://bqns2eyqwg73" path="res://asset/subaru.png" id="2_pphlw"]
+[ext_resource type="Script" path="res://Standing.gd" id="3_2d1it"]
+[ext_resource type="Script" path="res://Airing.gd" id="4_yojmx"]
+[ext_resource type="Script" path="res://Climbing.gd" id="5_rwdgs"]
+[ext_resource type="Script" path="res://Dashing.gd" id="6_oljj0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjv8j"]
+size = Vector2(8, 11)
+
+[node name="Subaru" type="CharacterBody2D"]
+floor_block_on_wall = false
+script = ExtResource("1_ry8js")
+initial_state = NodePath("Airing")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_pphlw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_mjv8j")
+
+[node name="Standing" type="Node" parent="."]
+script = ExtResource("3_2d1it")
+
+[node name="Climbing" type="Node" parent="."]
+script = ExtResource("5_rwdgs")
+
+[node name="Dashing" type="Node" parent="."]
+script = ExtResource("6_oljj0")
+
+[node name="Airing" type="Node" parent="."]
+script = ExtResource("4_yojmx")
+
+[node name="RightSide" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(-2.18557e-07, 5)
+
+[node name="LeftSide" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(0, -5)
+
+[node name="RightSide2" type="RayCast2D" parent="."]
+position = Vector2(0, 8)
+rotation = -1.5708
+target_position = Vector2(-2.18557e-07, 5)
+
+[node name="LeftSide2" type="RayCast2D" parent="."]
+position = Vector2(0, 8)
+rotation = -1.5708
+target_position = Vector2(0, -5)
