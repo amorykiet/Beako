@@ -17,11 +17,15 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=180
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
+
+[editor]
+
+movie_writer/movie_file="D:/GodotMovie/gameplay.avi"
 
 [input]
 
@@ -61,6 +65,14 @@ DOWN={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="BaseTile"
+2d_physics/layer_3="Fruit"
+2d_physics/layer_4="DeadTile"
+
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.113725, 0.168627, 0.32549, 1)
