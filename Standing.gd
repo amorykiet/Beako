@@ -66,7 +66,6 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 		subaru.transition_to("Climbing",{left = true})
 
 func enter( subaru: Subaru, _msg := {}) -> void:
-	subaru.fruit_collected = 0
 	timer_to_fall.stop()
 	falling = false
 	subaru.cur_stama = subaru.MAX_STAMA
