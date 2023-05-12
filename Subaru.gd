@@ -14,6 +14,7 @@ var updating: bool= false
 var can_dash:= true
 var dash_direction: Vector2= Vector2.RIGHT
 var cur_stama: int = MAX_STAMA
+var fruit_collected: int = 0
 
 func _ready():
 	state.enter(self)
