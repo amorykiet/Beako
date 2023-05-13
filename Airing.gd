@@ -51,6 +51,8 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 		subaru.dash_direction.y = 1
 		subaru.velocity.y = FALL_SPEED*1.5
 	subaru.move_and_slide()
+	if subaru.get_last_slide_collision() and subaru.get_last_slide_collision().get_collider().name == "DeadArea":
+		subaru.transition_to("Dead")
 
 	#STANDING
 	if subaru.is_on_floor():

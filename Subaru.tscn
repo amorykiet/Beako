@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4aqtu6mrsdgh"]
+[gd_scene load_steps=9 format=3 uid="uid://d4aqtu6mrsdgh"]
 
 [ext_resource type="Script" path="res://Subaru.gd" id="1_ry8js"]
 [ext_resource type="Texture2D" uid="uid://bqns2eyqwg73" path="res://asset/subaru.png" id="2_pphlw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Airing.gd" id="4_yojmx"]
 [ext_resource type="Script" path="res://Climbing.gd" id="5_rwdgs"]
 [ext_resource type="Script" path="res://Dashing.gd" id="6_oljj0"]
+[ext_resource type="Script" path="res://Dead.gd" id="7_1fa1v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjv8j"]
 size = Vector2(8, 11)
@@ -35,6 +36,9 @@ script = ExtResource("6_oljj0")
 
 [node name="Airing" type="Node" parent="."]
 script = ExtResource("4_yojmx")
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("7_1fa1v")
 
 [node name="RightSide" type="RayCast2D" parent="."]
 rotation = -1.5708

@@ -61,6 +61,8 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 		elif Input.is_action_pressed("LEFT"):
 			direction_jump.x = -1
 	subaru.move_and_slide()
+	if subaru.get_last_slide_collision() and subaru.get_last_slide_collision().get_collider().name == "DeadArea":
+		subaru.transition_to("Dead")
 	
 	#CLIMB ON TOP
 	if not jumped:

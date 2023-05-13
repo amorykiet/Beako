@@ -58,6 +58,8 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 		if timer_to_fall.is_stopped():
 			subaru.transition_to("Airing")
 	subaru.move_and_slide()
+	if subaru.get_last_slide_collision() and subaru.get_last_slide_collision().get_collider().name == "DeadArea":
+		subaru.transition_to("Dead")
 
 	#CLIMBING
 	if Input.is_action_pressed("Z") and (subaru.rightCast.is_colliding()):
@@ -66,6 +68,7 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 		subaru.transition_to("Climbing",{left = true})
 
 func enter( subaru: Subaru, _msg := {}) -> void:
+	subaru.fruits_collecting = 0
 	timer_to_fall.stop()
 	falling = false
 	subaru.cur_stama = subaru.MAX_STAMA

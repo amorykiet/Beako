@@ -10,6 +10,8 @@ func update(subaru: Subaru, _delta: float) -> void:
 
 func physics_update( subaru: Subaru, _delta: float) -> void:
 	subaru.move_and_collide(subaru.velocity*_delta)
+	if subaru.get_last_slide_collision() and subaru.get_last_slide_collision().get_collider().name == "DeadArea":
+		subaru.transition_to("Dead")
 	
 func enter( subaru: Subaru, _msg := {}) -> void:
 	subaru.velocity = _msg.get("direction")*500
