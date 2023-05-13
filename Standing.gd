@@ -74,6 +74,8 @@ func enter( subaru: Subaru, _msg := {}) -> void:
 		if subaru.get_last_slide_collision().get_collider().name == "FruitsCollectArea":
 			GamePlayProgress.fruits_collected += GamePlayProgress.fruits_collecting
 			GamePlayProgress.fruits_collecting = 0
+#		if subaru.get_last_slide_collision().get_collider().name == "DeadArea":
+#			subaru.transition_to("Dead")
 	timer_to_fall.stop()
 	falling = false
 	subaru.cur_stama = subaru.MAX_STAMA

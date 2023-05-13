@@ -18,6 +18,7 @@ var cur_stama: int = MAX_STAMA
 #var fruits_collecting: int = 0
 
 func _ready():
+	GamePlayProgress.state = state
 	state.enter(self)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -28,6 +29,9 @@ func _process(delta: float) -> void:
 		state.update(self, delta)
 
 func _physics_process(delta: float) -> void:
+	GamePlayProgress.stama = cur_stama
+	if get_last_slide_collision():
+		GamePlayProgress.collision = get_last_slide_collision().get_collider().name
 	if velocity.x > 0:
 		face_direction.x = 1
 	elif velocity.x < 0:
@@ -39,6 +43,9 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	if not has_node(target_state_name):
 		return
 	state.exit(self)
+#	print(state.name)
 	state = get_node(target_state_name)
+	GamePlayProgress.state = state
 	state.enter(self, msg)
-#	print(state)
+#	print("to")
+#	print(state.name)

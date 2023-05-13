@@ -10,9 +10,10 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 	subaru.velocity = Vector2.ZERO
 
 func enter( subaru: Subaru, _msg := {}) -> void:
-	print("dead")
+	subaru.velocity = Vector2.ZERO
 	GamePlayProgress.fruits_collecting = 0
+	subaru.cur_stama = 0
 	subaru.hide()
-
+	subaru.updating = true
 func exit(subaru: Subaru) -> void:
-	pass
+	subaru.updating = false
