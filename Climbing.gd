@@ -31,6 +31,7 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 	subaru.cur_stama -= ENERGY_REDUCION_CLIMB_SPEED*_delta
 	if subaru.cur_stama < 0:
 		subaru.cur_stama = 0
+#		Input.action_release("Z")
 		subaru.transition_to("Airing")
 	
 	#MOVING IN WALL

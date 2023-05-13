@@ -75,6 +75,7 @@ DOWN={
 2d_physics/layer_2="BaseTile"
 2d_physics/layer_3="Fruit"
 2d_physics/layer_4="DeadTile"
+2d_physics/layer_5="FruitCollectTile"
 
 [rendering]
 

@@ -24,7 +24,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(self, event)
 
 func _process(delta: float) -> void:
-#	print(fruits_collecting)
 	if updating:
 		state.update(self, delta)
 
@@ -42,3 +41,4 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	state.exit(self)
 	state = get_node(target_state_name)
 	state.enter(self, msg)
+#	print(state)
