@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://csx22c0ix306q"]
+[gd_scene load_steps=6 format=3 uid="uid://csx22c0ix306q"]
 
 [ext_resource type="PackedScene" uid="uid://c38jm30c1i0sp" path="res://Enviroment.tscn" id="1_772hv"]
 [ext_resource type="PackedScene" uid="uid://d4aqtu6mrsdgh" path="res://Subaru.tscn" id="2_3p8yq"]
 [ext_resource type="PackedScene" uid="uid://bsc63dwhdxxy" path="res://DeadArea.tscn" id="2_dvp75"]
 [ext_resource type="PackedScene" uid="uid://c7ym0v8ovel0l" path="res://Fruit.tscn" id="3_1uyem"]
+[ext_resource type="PackedScene" uid="uid://ic3wxfw2ijkd" path="res://ui.tscn" id="5_vrei8"]
 
 [node name="Test" type="Node2D"]
 
@@ -25,3 +26,5 @@ position = Vector2(248, 145)
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(4, 4)
+
+[node name="UI" parent="." instance=ExtResource("5_vrei8")]
