@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ic3wxfw2ijkd"]
+[gd_scene load_steps=3 format=3 uid="uid://ic3wxfw2ijkd"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_m46cn"]
+[ext_resource type="FontFile" uid="uid://cj5q8bu2nymxp" path="res://fonts/monogram.ttf" id="2_lma0i"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_m46cn")
@@ -24,12 +25,16 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_lma0i")
+theme_override_font_sizes/font_size = 32
 text = "Fruits collected: "
 
 [node name="FruitsCollectedLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_lma0i")
+theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
@@ -38,26 +43,16 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_lma0i")
+theme_override_font_sizes/font_size = 32
 text = "Fruits collecting: "
 
 [node name="FruitsCollectingLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "0"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "State: "
-
-[node name="State" type="Label" parent="Control/VBoxContainer/HBoxContainer3"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_lma0i")
+theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Control/VBoxContainer"]
@@ -66,9 +61,28 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_lma0i")
+theme_override_font_sizes/font_size = 32
 text = "Stamina: "
 
 [node name="Stamina" type="Label" parent="Control/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_lma0i")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "State: "
+
+[node name="State" type="Label" parent="Control/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

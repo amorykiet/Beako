@@ -70,7 +70,7 @@ func enter( subaru: Subaru, _msg := {}) -> void:
 	if subaru.get_last_slide_collision():
 		if subaru.get_last_slide_collision().get_collider().name == "Enviroment":
 			GamePlayProgress.fruits_collecting = 0
-		if subaru.get_last_slide_collision().get_collider().name == "FruitCollectArea":
+		if subaru.get_last_slide_collision().get_collider().is_in_group("FruitArea"):
 			GamePlayProgress.fruits_collected += GamePlayProgress.fruits_collecting
 			GamePlayProgress.checkpoint = subaru.get_last_slide_collision().get_collider().position + Vector2(0,-12)
 			GamePlayProgress.fruits_collecting = 0
