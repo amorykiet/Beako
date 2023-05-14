@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4aqtu6mrsdgh"]
+[gd_scene load_steps=10 format=3 uid="uid://d4aqtu6mrsdgh"]
 
 [ext_resource type="Script" path="res://Subaru.gd" id="1_ry8js"]
 [ext_resource type="Texture2D" uid="uid://bqns2eyqwg73" path="res://asset/subaru.png" id="2_pphlw"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://Dashing.gd" id="6_oljj0"]
 [ext_resource type="Script" path="res://Dead.gd" id="7_1fa1v"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bl8hu"]
+size = Vector2(10, 13)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjv8j"]
 size = Vector2(8, 11)
 
@@ -16,6 +19,14 @@ collision_mask = 30
 floor_block_on_wall = false
 script = ExtResource("1_ry8js")
 initial_state = NodePath("Airing")
+
+[node name="DeadBody" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadBody"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_bl8hu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -61,3 +72,5 @@ position = Vector2(0, 8)
 rotation = -1.5708
 target_position = Vector2(0, -5)
 collision_mask = 2
+
+[connection signal="body_entered" from="DeadBody" to="." method="_on_dead_body_body_entered"]

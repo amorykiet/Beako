@@ -58,8 +58,6 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 		if timer_to_fall.is_stopped():
 			subaru.transition_to("Airing")
 	subaru.move_and_slide()
-	if subaru.get_last_slide_collision() and subaru.get_last_slide_collision().get_collider().name == "DeadArea":
-		subaru.transition_to("Dead")
 
 	#CLIMBING
 	if Input.is_action_pressed("Z") and (subaru.rightCast.is_colliding()):
@@ -73,8 +71,6 @@ func enter( subaru: Subaru, _msg := {}) -> void:
 		if subaru.get_last_slide_collision().get_collider().name == "Enviroment":
 			GamePlayProgress.fruits_collecting = 0
 		if subaru.get_last_slide_collision().get_collider().name == "FruitCollectArea":
-#			print(subaru.get_last_slide_collision().get_collider().position)
-#			print(subaru.position)
 			GamePlayProgress.fruits_collected += GamePlayProgress.fruits_collecting
 			GamePlayProgress.checkpoint = subaru.get_last_slide_collision().get_collider().position + Vector2(0,-12)
 			GamePlayProgress.fruits_collecting = 0

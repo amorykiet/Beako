@@ -5,4 +5,3 @@ func _process(delta):
 	%FruitsCollectingLabel.text = str(GamePlayProgress.fruits_collecting)
 	%State.text = str(GamePlayProgress.state.name)
 	%Stamina.text = str(GamePlayProgress.stama)
-	%Collision.text = GamePlayProgress.collision

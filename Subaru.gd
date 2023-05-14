@@ -28,8 +28,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	GamePlayProgress.stama = cur_stama
-	if get_last_slide_collision():
-		GamePlayProgress.collision = get_last_slide_collision().get_collider().name
+
 	if velocity.x > 0:
 		face_direction.x = 1
 	elif velocity.x < 0:
@@ -44,3 +43,8 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	state = get_node(target_state_name)
 	GamePlayProgress.state = state
 	state.enter(self, msg)
+
+
+func _on_dead_body_body_entered(body):
+	if body.name == "DeadArea":
+		transition_to("Dead")

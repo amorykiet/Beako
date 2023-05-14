@@ -1,9 +1,8 @@
 extends State
 @onready var timer_to_respawn: Timer = Timer.new()
-@onready var falling: bool = false
 
 func _ready():
-	timer_to_respawn.wait_time = 2
+	timer_to_respawn.wait_time = 1
 	timer_to_respawn.one_shot = true
 	add_child(timer_to_respawn)
 
