@@ -66,9 +66,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Stama: "
+text = "Stamina: "
 
-[node name="Stama" type="Label" parent="Control/VBoxContainer/HBoxContainer4"]
+[node name="Stamina" type="Label" parent="Control/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

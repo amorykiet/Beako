@@ -68,14 +68,16 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 		subaru.transition_to("Climbing",{left = true})
 
 func enter( subaru: Subaru, _msg := {}) -> void:
+	subaru.velocity.y = 0
 	if subaru.get_last_slide_collision():
 		if subaru.get_last_slide_collision().get_collider().name == "Enviroment":
 			GamePlayProgress.fruits_collecting = 0
-		if subaru.get_last_slide_collision().get_collider().name == "FruitsCollectArea":
+		if subaru.get_last_slide_collision().get_collider().name == "FruitCollectArea":
+#			print(subaru.get_last_slide_collision().get_collider().position)
+#			print(subaru.position)
 			GamePlayProgress.fruits_collected += GamePlayProgress.fruits_collecting
+			GamePlayProgress.checkpoint = subaru.get_last_slide_collision().get_collider().position + Vector2(0,-12)
 			GamePlayProgress.fruits_collecting = 0
-#		if subaru.get_last_slide_collision().get_collider().name == "DeadArea":
-#			subaru.transition_to("Dead")
 	timer_to_fall.stop()
 	falling = false
 	subaru.cur_stama = subaru.MAX_STAMA

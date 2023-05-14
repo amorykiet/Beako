@@ -5,3 +5,4 @@ var fruits_collecting: int = 0
 var state: State
 var stama: int
 var collision: String
+var checkpoint: Vector2 = Vector2(30,150)

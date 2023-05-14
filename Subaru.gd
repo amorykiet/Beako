@@ -14,8 +14,6 @@ var updating: bool= false
 var can_dash:= true
 var dash_direction: Vector2= Vector2.RIGHT
 var cur_stama: int = MAX_STAMA
-#var fruits_collected: int = 0
-#var fruits_collecting: int = 0
 
 func _ready():
 	GamePlayProgress.state = state
@@ -43,9 +41,6 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	if not has_node(target_state_name):
 		return
 	state.exit(self)
-#	print(state.name)
 	state = get_node(target_state_name)
 	GamePlayProgress.state = state
 	state.enter(self, msg)
-#	print("to")
-#	print(state.name)

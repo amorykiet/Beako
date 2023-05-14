@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl3nerduo0sde"]
+
+[ext_resource type="Texture2D" uid="uid://76cg8twh67kw" path="res://asset/collect_fruit_tile.png" id="1_jqp4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nfce"]
+size = Vector2(8, 8)
+
+[node name="FruitCollectArea" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jqp4w")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2nfce")
