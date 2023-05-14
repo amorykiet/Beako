@@ -2,6 +2,19 @@ extends Moving
 var wallOn := -1
 var jumped := false
 var direction_jump: Vector2 = Vector2.ZERO
+@onready var timer_to_jump: Timer = Timer.new()
+#@onready var timer_to_jump_on_top: Timer = Timer.new()
+#var jumping_on_top: bool = false
+
+func _ready():
+	timer_to_jump.wait_time = 0.1
+	timer_to_jump.one_shot = true
+	add_child(timer_to_jump)
+#	timer_to_jump_on_top.wait_time = 0.1
+#	timer_to_jump_on_top.one_shot = true
+#	add_child(timer_to_jump_on_top)
+
+
 
 func handle_input(subaru: Subaru, _event: InputEvent) -> void:
 	if _event.is_action_pressed("UP"):
@@ -13,20 +26,23 @@ func handle_input(subaru: Subaru, _event: InputEvent) -> void:
 	if _event.is_action_released("Z"):
 		subaru.transition_to("Airing")
 	if _event.is_action_pressed("C"):
-		await get_tree().create_timer(0.02).timeout
+#		await get_tree().create_timer(0.02).timeout
 		subaru.cur_stama -= ENERGY_REDUCION_JUMP_ON_WALL
 		jumped = true
 		if (direction_jump == Vector2.UP) or (((wallOn == LEFT and direction_jump.x == -1) or (wallOn == RIGHT and direction_jump.x == 1)) and direction_jump.y == -1):
 			subaru.velocity = Vector2.UP * JUMP_ON_WALL_SPEED
-			await get_tree().create_timer(0.1).timeout
-			jumped = false
-			subaru.velocity = Vector2.ZERO
+			timer_to_jump.start()
+
 		else:
 			Input.action_release("Z")
 			subaru.transition_to("Airing",{jump_on_wall = true, lastWall = wallOn})
 
 
 func physics_update( subaru: Subaru, _delta: float) -> void:
+	if timer_to_jump.is_stopped() and jumped:
+		jumped = false
+		subaru.velocity = Vector2.ZERO
+	
 	#STAMA
 	subaru.cur_stama -= ENERGY_REDUCION_CLIMB_SPEED*_delta
 	if subaru.cur_stama < 0:
@@ -64,15 +80,14 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 	subaru.move_and_slide()
 	
 	#CLIMB ON TOP
-	if not jumped:
-		if (wallOn == RIGHT) and not subaru.rightCast.is_colliding() and not subaru.rightCast2.is_colliding():
-			subaru.velocity = Vector2(1,0)*80
-			await get_tree().create_timer(0.1).timeout
-			subaru.transition_to("Airing")
-		if (wallOn == LEFT) and not subaru.leftCast.is_colliding() and not subaru.leftCast2.is_colliding():
-			subaru.velocity = Vector2(-1,0)*80
-			await get_tree().create_timer(0.1).timeout
-			subaru.transition_to("Airing")
+	if (wallOn == RIGHT) and not subaru.rightCast.is_colliding() and not subaru.rightCast2.is_colliding():
+		subaru.velocity = Vector2(1,0)*80
+		await get_tree().create_timer(0.1).timeout
+		subaru.transition_to("Airing")
+	if (wallOn == LEFT) and not subaru.leftCast.is_colliding() and not subaru.leftCast2.is_colliding():
+		subaru.velocity = Vector2(-1,0)*80
+		await get_tree().create_timer(0.1).timeout
+		subaru.transition_to("Airing")
 
 func enter( subaru: Subaru, _msg := {}) -> void:
 	jumped = false

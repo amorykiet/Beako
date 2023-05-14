@@ -2,6 +2,12 @@ extends Moving
 
 @onready var gravity: float= GRAVITY
 var release: bool = false
+@onready var timer_to_dash: Timer = Timer.new()
+
+func _ready():
+	timer_to_dash.wait_time = 0.1
+	timer_to_dash.one_shot = true
+	add_child(timer_to_dash)
 
 func handle_input(subaru: Subaru, _event: InputEvent) -> void: 
 
@@ -25,6 +31,8 @@ func handle_input(subaru: Subaru, _event: InputEvent) -> void:
 
 
 func physics_update( subaru: Subaru, _delta: float) -> void:
+	if timer_to_dash.is_stopped() and gravity == 0:
+		gravity = GRAVITY
 	#MOVING IN ARI
 	subaru.velocity.y += gravity*_delta
 	if subaru.velocity.y > FALL_SPEED:
@@ -66,6 +74,7 @@ func physics_update( subaru: Subaru, _delta: float) -> void:
 
 
 func enter(subaru: Subaru, _msg:= {}) -> void:
+	gravity = GRAVITY
 	if _msg.has("do_jump"):
 		release = false
 		subaru.velocity.y = JUMP_SPEED
@@ -85,10 +94,7 @@ func enter(subaru: Subaru, _msg:= {}) -> void:
 	if _msg.has("dash"):
 		subaru.velocity.y = 0
 		gravity = 0
-		await get_tree().create_timer(0.1).timeout
-
-	gravity = GRAVITY
-
+		timer_to_dash.start()
 
 func exit(subaru: Subaru) -> void:
 	subaru.updating= false

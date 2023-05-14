@@ -15,6 +15,7 @@ var can_dash:= true
 var dash_direction: Vector2= Vector2.RIGHT
 var cur_stama: int = MAX_STAMA
 
+
 func _ready():
 	GamePlayProgress.state = state
 	state.enter(self)
@@ -23,6 +24,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(self, event)
 
 func _process(delta: float) -> void:
+	if not can_dash and $Sprite2D.frame == 0:
+		$Sprite2D.frame = 1
+	elif  can_dash and $Sprite2D.frame == 1:
+		$Sprite2D.frame = 0
 	if updating:
 		state.update(self, delta)
 
