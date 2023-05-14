@@ -6,4 +6,9 @@ func _on_body_entered(body):
 		body.cur_stama = body.MAX_STAMA
 		GamePlayProgress.fruits_collecting += 1
 		body.can_dash = true
-		queue_free()
+		$Sprite2D.hide()
+		$CollisionShape2D.set_deferred("disabled", true)
+
+func reload():
+	$Sprite2D.show()
+	$CollisionShape2D.set_deferred("disabled", false)

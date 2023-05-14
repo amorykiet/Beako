@@ -72,7 +72,7 @@ func enter( subaru: Subaru, _msg := {}) -> void:
 			GamePlayProgress.fruits_collecting = 0
 		if subaru.get_last_slide_collision().get_collider().is_in_group("FruitArea"):
 			GamePlayProgress.fruits_collected += GamePlayProgress.fruits_collecting
-			GamePlayProgress.checkpoint = subaru.get_last_slide_collision().get_collider().position + Vector2(0,-12)
+			GamePlayProgress.current_level.fruits += GamePlayProgress.fruits_collecting
 			GamePlayProgress.fruits_collecting = 0
 	timer_to_fall.stop()
 	falling = false

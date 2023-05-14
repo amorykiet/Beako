@@ -28,6 +28,10 @@ func _process(delta: float) -> void:
 		$Sprite2D.frame = 1
 	elif  can_dash and $Sprite2D.frame == 1:
 		$Sprite2D.frame = 0
+	if GamePlayProgress.fruits_collecting == 0 and $Sprite2D2.visible:
+		$Sprite2D2.hide()
+	elif GamePlayProgress.fruits_collecting != 0 and not $Sprite2D2.visible:
+		$Sprite2D2.show()
 	if updating:
 		state.update(self, delta)
 
@@ -53,3 +57,6 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 func _on_dead_body_body_entered(body):
 	if body.name == "DeadArea":
 		transition_to("Dead")
+
+func disable_collision(disable: bool):
+	$CollisionShape2D.set_deferred("disabled", disable)

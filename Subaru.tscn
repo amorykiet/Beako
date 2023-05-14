@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4aqtu6mrsdgh"]
+[gd_scene load_steps=11 format=3 uid="uid://d4aqtu6mrsdgh"]
 
 [ext_resource type="Script" path="res://Subaru.gd" id="1_ry8js"]
 [ext_resource type="Texture2D" uid="uid://bqns2eyqwg73" path="res://asset/subaru.png" id="2_pphlw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Climbing.gd" id="5_rwdgs"]
 [ext_resource type="Script" path="res://Dashing.gd" id="6_oljj0"]
 [ext_resource type="Script" path="res://Dead.gd" id="7_1fa1v"]
+[ext_resource type="Texture2D" uid="uid://bb1rxeo1u81l2" path="res://asset/fruit.png" id="8_3mcqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bl8hu"]
 size = Vector2(10, 13)
@@ -32,6 +33,7 @@ shape = SubResource("RectangleShape2D_bl8hu")
 texture_filter = 1
 texture = ExtResource("2_pphlw")
 hframes = 2
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
@@ -73,5 +75,11 @@ position = Vector2(0, 8)
 rotation = -1.5708
 target_position = Vector2(0, -5)
 collision_mask = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("8_3mcqv")
+hframes = 2
+vframes = 2
 
 [connection signal="body_entered" from="DeadBody" to="." method="_on_dead_body_body_entered"]
